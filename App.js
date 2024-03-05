@@ -1,19 +1,23 @@
 import React, { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { Text, View, SafeAreaView, ScrollView, Image, StatusBar, TouchableOpacity, TextInput } from 'react-native';
 import Comp1 from './components/Comp1';
-import Soma from './components/Soma';
 import styles from './components/Estilo';
+import Home from './Home'; 
 
-export default () => {
+const Stack = createStackNavigator();
+
+const App = () => {
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([]);
   const [completedTodos, setCompletedTodos] = useState([]);
 
-  const addTodo = () => {
-    if (inputValue.trim() === '') {
+  const addTodo = (newTodo) => {
+    if (newTodo.trim() === '') {
       return;
     }
-    setTodos([...todos, inputValue]);
+    setTodos([...todos, newTodo]);
     setInputValue('');
   };
 
@@ -38,14 +42,46 @@ export default () => {
   };
 
   return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="ListaTarefas">
+          {(props) => (
+            <ListaTarefas
+              {...props}
+              todos={todos}
+              inputValue={inputValue}
+              addTodo={addTodo}
+              deleteTodo={deleteTodo}
+              completeTodo={completeTodo}
+              completedTodos={completedTodos}
+            />
+          )}
+        </Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+};
+
+export const ListaTarefas = ({ navigation, todos, inputValue, addTodo, deleteTodo, completeTodo, completedTodos }) => {
+  const [newTodo, setNewTodo] = useState('');
+
+  const handleAddTodo = () => {
+    if (newTodo.trim() === '') {
+      return;
+    }
+    addTodo(newTodo);
+    setNewTodo('');
+  };
+
+  return (
     <ScrollView>
       <StatusBar backgroundColor={'#808080'} barStyle='dark-content' />
 
       <View style={styles.viewSafeAndroid}>
         <SafeAreaView>
-          <Comp1></Comp1>
+          <Comp1 />
           <View>
-            {/* Image */}
             <View style={styles.viewImage}>
               <Image
                 style={[styles.tamImage, { width: 200, height: 200 }]}
@@ -53,17 +89,16 @@ export default () => {
               />
             </View>
 
-            {/* Add Todo Section */}
             <View style={styles.todoSection}>
               <Text style={styles.todoTitle}>Adicionar Tarefas</Text>
               <View style={styles.inputContainer}>
                 <TextInput
                   style={styles.input}
                   placeholder="Enter your task"
-                  onChangeText={text => setInputValue(text)}
-                  value={inputValue}
+                  onChangeText={text => setNewTodo(text)}
+                  value={newTodo}
                 />
-                <TouchableOpacity style={styles.addButton} onPress={addTodo}>
+                <TouchableOpacity style={styles.addButton} onPress={handleAddTodo}>
                   <Text style={styles.addButtonText}>Add</Text>
                 </TouchableOpacity>
               </View>
@@ -90,7 +125,7 @@ export default () => {
             {/* Completed Todos Section */}
             <View style={styles.todoSection}>
               <Text style={styles.todoTitle}>Tarefas Concluídas</Text>
-              <ScrollView>
+              <ScrollView keyboardShouldPersistTaps="handled"> 
                 {completedTodos.map((todo, index) => (
                   <View key={index} style={styles.todoItem}>
                     <Text style={styles.todoText}>{todo}</Text>
@@ -107,3 +142,5 @@ export default () => {
     </ScrollView>
   );
 };
+
+export default App;
