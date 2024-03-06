@@ -11,6 +11,7 @@ const Home = () => {
 
   return (
     <View style={styles.container}>
+     <Text style={styles.head}>RM551534 - Beatriz Svestka</Text>
       <Text style={styles.title}>Bem-vindo ao Meu App de Tarefas</Text>
       <Image
         style={styles.image}
@@ -31,9 +32,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#3498db',
-    paddingHorizontal: 20, // Adicionando um espaço lateral
+    backgroundColor: '#007FFF',
+    paddingHorizontal: 20, 
+
   },
+
+  head: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color:'#fff',
+    paddingBottom: 40,
+
+  },
+
   title: {
     fontSize: 28,
     fontWeight: 'bold',
@@ -50,7 +61,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#fff',
     marginBottom: 20,
-    textAlign: 'center', // Centralizando o texto
+    textAlign: 'center', 
   },
   button: {
     backgroundColor: '#2ecc71',

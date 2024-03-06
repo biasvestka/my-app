@@ -1,12 +1,12 @@
 const Estilo = {
   appContainer: {
     flex: 1,
-    backgroundColor: '#000', // Fundo preto
+    backgroundColor: '#000', 
   },
   viewSafeAndroid: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#000', // Fundo preto
+    backgroundColor: '#000', 
   },
   viewImage: {
     alignItems: 'center',
@@ -15,8 +15,8 @@ const Estilo = {
     padding: 20,
   },
   tamImage: {
-    width: 100, // Diminuindo o tamanho da imagem para 150
-    height: 100, // Diminuindo o tamanho da imagem para 150
+    width: 100, 
+    height: 100, 
   },
   todoSection: {
     marginBottom: 30,
@@ -25,20 +25,20 @@ const Estilo = {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
-    color: '#fff', // Texto branco
+    color: '#fff', 
   },
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
-    backgroundColor: '#222', // Cinza escuro
+    backgroundColor: '#222', 
     borderRadius: 8,
     paddingHorizontal: 10,
   },
   input: {
     flex: 1,
     height: 40,
-    color: '#fff', // Texto branco
+    color: '#fff', 
   },
   addButton: {
     backgroundColor: '#007bff',
@@ -49,19 +49,19 @@ const Estilo = {
   },
   addButtonText: {
     fontSize: 16,
-    color: '#fff', // Texto branco
+    color: '#fff', 
   },
   todoItem: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
-    backgroundColor: '#333', // Cinza mais escuro
+    backgroundColor: '#333', 
     padding: 10,
     borderRadius: 8,
   },
   todoText: {
     flex: 1,
-    color: '#fff', // Texto branco
+    color: '#fff', 
   },
   deleteButton: {
     backgroundColor: '#dc3545',
@@ -70,7 +70,7 @@ const Estilo = {
     borderRadius: 5,
   },
   deleteButtonText: {
-    color: '#fff', // Texto branco
+    color: '#fff', 
   },
   completeButton: {
     backgroundColor: '#28a745',
@@ -79,7 +79,7 @@ const Estilo = {
     borderRadius: 5,
   },
   completeButtonText: {
-    color: '#fff', // Texto branco
+    color: '#fff', 
   },
 };
 
